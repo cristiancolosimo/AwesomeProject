@@ -1,0 +1,15 @@
+stages:
+   - build
+
+prod_build: 
+   image: node:12.16.2
+   stage: build
+   script:
+      - NODE_ENV=production
+      - yarn install --frozen-lockfile --check-files
+      - yarn test
+      - yarn build
+   artifacts:
+      paths:
+        - build/
+        
